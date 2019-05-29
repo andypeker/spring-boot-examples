@@ -3,6 +3,7 @@ package com.neo.web;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -18,6 +19,13 @@ public class UserController {
     @RequestMapping("/getUser")
     public User getUser() {
         User user = userRepository.findByUserName("carol");
+        System.out.println("若下面没出现“无缓存的时候调用”字样且能打印出数据表示测试成功");
+        return user;
+    }
+
+    @RequestMapping("/getOneUser/{name}")
+    public User getOneUser(@PathVariable("name") String name) {
+        User user = userRepository.findByUserName(name);
         System.out.println("若下面没出现“无缓存的时候调用”字样且能打印出数据表示测试成功");
         return user;
     }
