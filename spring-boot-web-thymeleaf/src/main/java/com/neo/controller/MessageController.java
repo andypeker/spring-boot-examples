@@ -47,8 +47,12 @@ public class MessageController {
 		if (result.hasErrors()) {
 			return new ModelAndView("messages/form", "formErrors", result.getAllErrors());
 		}
+
 		message = this.messageRepository.save(message);
 		redirect.addFlashAttribute("globalMessage", "Successfully created a new message");
+
+		this.messageRepository.logAllMsgs();
+
 		return new ModelAndView("redirect:/{message.id}", "message.id", message.getId());
 	}
 

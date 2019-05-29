@@ -49,4 +49,9 @@ public class Message {
 		this.summary = summary;
 	}
 
+	@Override
+	public String toString(){
+		return "\n\t【ID】" + this.id + "\n\t【CREATED】" + this.created + "\n\t【TEXT】" + this.text + "\n\t【SUM】" + this.summary;
+	}
+
 }
